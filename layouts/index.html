@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Site.Title }} — units and physical constants in pure Go (planned)</title>
+<meta name="description" content="{{ .Site.Params.description }}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+{{ partial "styles.html" . }}
+</head>
+<body class="lm">
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="/"><img class="glyph" src="/img/logo.svg" width="32" height="32" alt="go-units logo"> {{ .Site.Title }}</a>
+    <nav><a href="#features">Scope</a><a href="#exact">Checks</a><a href="#packages">Packages</a><a href="#repos">Repositories</a></nav>
+    {{ partial "theme-toggle.html" . }}
+  </div></header>
+  {{ partial "fork-ribbon.html" "https://github.com/go-units" }}
+
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1 class="head">Units and physical constants, in pure Go.<br><span class="accent">Planned: nothing is released yet.</span></h1>
+      <p class="sub">go-units is the organisation the <a href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">go-scikit plan</a> names for what MATLAB's <code>symunit</code> and <code>physconst</code> and Mathematica's <code>Quantity</code> offer: <b>quantities with exact dimensions</b>, <b>conversion</b> and <b>dimensional analysis</b>, and the <b>CODATA constants</b>. It is wave 2 of the plan; no library and no code exist yet.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://go-units.github.io/docs/">{{ partial "icons/book.html" . }}Read the documentation →</a>
+      </div>
+      <div class="trust"><span><b>planned</b> wave 2</span><span><b>2</b> packages in the plan</span><span><b>0</b> releases</span></div>
+    </div>
+    <div class="term">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
+<pre style="white-space:pre;overflow-x:auto;tab-size:4">state    planned (wave 2)
+library  none yet
+plan     github.com/go-scikit/roadmap
+         PLAN.md, STATUS.md</pre>
+    </div>
+  </div></div>
+
+  <div class="strip"><div class="wrap">
+    <span class="lead-line">{{ len .Site.Params.packages }} planned packages — <b>no library released</b>: see the <a href="https://github.com/go-scikit/roadmap/blob/main/STATUS.md">plan's status</a></span>
+    <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
+  </div></div>
+
+  <section id="features"><div class="wrap">
+    <span class="eyebrow">What it will cover</span>
+    <h2>Units, <i>exact where the definition is exact</i>.</h2>
+    <p class="lead">Every item starts from the roadmap's bibliography, is validated against the tool that is the reference in its domain, and lands with tests at 100% coverage and a performance table: no slower than the reference on one core.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">📏</div><h3>Quantities</h3><p>A dimension vector of rational exponents with a scale factor and an offset, so that degC and degF are units like the others.</p></div>
+      <div class="card"><div class="ico">⇄</div><h3>Conversion</h3><p>SI, US customary and derived units, and a parser for the UDUNITS grammar that NetCDF's CF conventions use.</p></div>
+      <div class="card"><div class="ico">π</div><h3>Dimensional analysis</h3><p>Compatibility checks and Buckingham's pi theorem, from the null space of the exponent matrix.</p></div>
+      <div class="card"><div class="ico">h</div><h3>Constants</h3><p>The CODATA 2022 values, generated from NIST's ASCII table with the edition recorded.</p></div>
+      <div class="card"><div class="ico">🧭</div><h3>Unit systems</h3><p>User-defined systems such as EMU, ESU and atomic units, in wave 4.</p></div>
+      <div class="card"><div class="ico">🚫</div><h3>No existing Go package</h3><p>None of the Go unit packages is a dimensional-analysis engine, so none is a dependency. Dates and time scales stay with go-datetime.</p></div>
+      <div class="card"><div class="ico">📦</div><h3>Pure Go, CGO=0</h3><p>On every architecture the fleet's CI tests.</p></div>
+      <div class="card"><div class="ico">⚖️</div><h3>BSD-3-Clause</h3><p>Every repository of the organization.</p></div>
+    </div>
+  </div></section>
+
+  <section id="exact" style="padding-top:10px"><div class="wrap">
+    <span class="eyebrow">What will be checked</span>
+    <h2>{{ len .Site.Params.checks }} kinds of check, each <i>against a reference</i>.</h2>
+    <p class="lead">These are the measures the plan holds the work to. None has been run: there is no code yet.</p>
+    <div class="grid">
+      {{ range .Site.Params.checks }}
+      <div class="card"><h3>{{ .name }}</h3><p>{{ .what | markdownify }}</p></div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="packages" style="padding-top:20px"><div class="wrap">
+    <span class="eyebrow">Planned packages</span>
+    <h2>What will be here.</h2>
+    <p class="lead">The names are provisional. None of these repositories exists yet.</p>
+    <div class="road">
+      {{ range .Site.Params.packages }}
+      <div class="ph">
+        <div class="top"><h4>{{ .name }}</h4><span class="tag">{{ .kind }}</span></div>
+        <p>{{ .blurb | safeHTML }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="repos" style="padding-top:20px"><div class="wrap">
+    <span class="eyebrow">Repositories</span>
+    <h2>What is here.</h2>
+    <div class="road">
+      {{ range .Site.Params.repos }}
+      <div class="ph">
+        <div class="top"><h4><a href="{{ .href }}">{{ .name }}</a></h4><span class="tag active">{{ .kind }}</span></div>
+        <p>{{ .blurb | safeHTML }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="eco" style="padding-top:6px"><div class="wrap">
+    <div class="band">
+      <h2>Units for Go.</h2>
+      <p>go-units is planned, wave 2 of the go-scikit roadmap. The <a href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md"><u>plan</u></a> says what it will cover and in what order, and its <a href="https://github.com/go-scikit/roadmap/blob/main/STATUS.md"><u>status</u></a> says where each item stands. The <a href="https://go-units.github.io/docs/"><u>documentation</u></a> repeats the scope and the references.</p>
+      <a class="btn btn-ghost" href="https://github.com/go-units">{{ partial "icons/github.html" . }}Read the source on GitHub →</a>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap"><span>go-units · <a href="https://github.com/go-units">go-units on GitHub</a> · BSD-3-Clause</span><span>every quantity · dimensioned right</span></div></footer>
+</body>
+</html>
