@@ -74,3 +74,9 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   chipFgDark = "#ccd89b"
   statsEnd = "#e9eed4"
   bandText = "#f0f4e2"
+
+# The hero's buttons, rendered by landingkit's cta.html in the kit's order.
+[[params.cta]]
+  kind  = "docs"
+  href  = "https://go-units.github.io/docs/"
+  label = "Read the documentation →"

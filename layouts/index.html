@@ -20,9 +20,8 @@
     <div>
       <h1 class="head">Units and physical constants, in pure Go.<br><span class="accent">Planned: nothing is released yet.</span></h1>
       <p class="sub">go-units is the organisation the <a href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">go-scikit plan</a> names for what MATLAB's <code>symunit</code> and <code>physconst</code> and Mathematica's <code>Quantity</code> offer: <b>quantities with exact dimensions</b>, <b>conversion</b> and <b>dimensional analysis</b>, and the <b>CODATA constants</b>. It is wave 2 of the plan; no library and no code exist yet.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="https://go-units.github.io/docs/">{{ partial "icons/book.html" . }}Read the documentation →</a>
-      </div>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust"><span><b>planned</b> wave 2</span><span><b>2</b> packages in the plan</span><span><b>0</b> releases</span></div>
     </div>
     <div class="term">
@@ -50,8 +49,8 @@ plan     github.com/go-scikit/roadmap
       <div class="card"><div class="ico">h</div><h3>Constants</h3><p>The CODATA 2022 values, generated from NIST's ASCII table with the edition recorded.</p></div>
       <div class="card"><div class="ico">🧭</div><h3>Unit systems</h3><p>User-defined systems such as EMU, ESU and atomic units, in wave 4.</p></div>
       <div class="card"><div class="ico">🚫</div><h3>No existing Go package</h3><p>None of the Go unit packages is a dimensional-analysis engine, so none is a dependency. Dates and time scales stay with go-datetime.</p></div>
-      <div class="card"><div class="ico">📦</div><h3>Pure Go, CGO=0</h3><p>On every architecture the fleet's CI tests.</p></div>
-      <div class="card"><div class="ico">⚖️</div><h3>BSD-3-Clause</h3><p>Every repository of the organization.</p></div>
+      {{ if not (partial "mantra-on.html" $) }}<div class="card"><div class="ico">📦</div><h3>Pure Go, CGO=0</h3><p>On every architecture the fleet's CI tests.</p></div>{{ end }}
+      {{ if not (partial "mantra-on.html" $) }}<div class="card"><div class="ico">⚖️</div><h3>BSD-3-Clause</h3><p>Every repository of the organization.</p></div>{{ end }}
     </div>
   </div></section>
 
@@ -101,6 +100,6 @@ plan     github.com/go-scikit/roadmap
     </div>
   </div></section>
 
-  <footer><div class="wrap"><span>go-units · <a href="https://github.com/go-units">go-units on GitHub</a> · BSD-3-Clause</span><span>every quantity · dimensioned right</span></div></footer>
+  <footer><div class="wrap"><span>go-units · <a href="https://github.com/go-units">go-units on GitHub</a>{{ if not (partial "mantra-on.html" $) }} · BSD-3-Clause{{ end }}</span><span>every quantity · dimensioned right</span></div></footer>
 </body>
 </html>
